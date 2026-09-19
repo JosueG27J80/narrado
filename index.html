@@ -1,0 +1,2390 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Erick Aguilar & Gaby Gonzales</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+    --azul:#173b63;
+    --azul-profundo:#102d4c;
+    --azul-2:#315b82;
+    --azul-suave:#6f8eae;
+    --azul-claro:#edf3f8;
+    --blanco:#ffffff;
+    --gris:#5e6873;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    margin:0;
+    background:#ffffff;
+    color:var(--azul);
+    font-family:'Montserrat',sans-serif;
+    overflow-x:hidden;
+}
+
+section{
+    position:relative;
+    min-height:100vh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    overflow:hidden;
+}
+
+.content{
+    position:relative;
+    z-index:10;
+    width:min(900px,90%);
+    text-align:center;
+}
+
+.small-title{
+    font-size:10px;
+    letter-spacing:4px;
+    text-transform:uppercase;
+    color:var(--azul-2);
+    margin-bottom:20px;
+}
+
+h1,h2,h3{
+    font-family:'Cormorant Garamond',serif;
+    font-weight:500;
+}
+
+h2{
+    font-size:clamp(45px,8vw,72px);
+    line-height:.95;
+    margin-bottom:25px;
+}
+
+.text{
+    max-width:650px;
+    margin:auto;
+    color:var(--gris);
+    line-height:1.9;
+    font-size:14px;
+}
+
+.blue-line{
+    width:75px;
+    height:1px;
+    background:var(--azul-2);
+    margin:27px auto;
+}
+
+
+/* =========================
+   NAVEGACIÓN
+========================= */
+
+.nav{
+    position:fixed;
+
+    top:18px;
+    left:50%;
+
+    transform:translateX(-50%);
+
+    z-index:1000;
+
+    width:calc(100% - 35px);
+    max-width:620px;
+
+    padding:9px 12px;
+
+    display:flex;
+    justify-content:center;
+    gap:4px;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.34) 0%,
+            rgba(255,255,255,.16) 45%,
+            rgba(255,255,255,.10) 100%
+        );
+
+    backdrop-filter:
+        blur(24px)
+        saturate(180%)
+        brightness(108%);
+
+    -webkit-backdrop-filter:
+        blur(24px)
+        saturate(180%)
+        brightness(108%);
+
+    border:1px solid rgba(255,255,255,.48);
+
+    border-radius:50px;
+
+    box-shadow:
+        0 2px 4px rgba(255,255,255,.35) inset,
+        0 1px 1px rgba(255,255,255,.65) inset,
+        0 -1px 1px rgba(16,45,76,.08) inset,
+        0 10px 30px rgba(16,45,76,.12),
+        0 25px 55px rgba(16,45,76,.10);
+
+    overflow:hidden;
+}
+
+.nav::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:7%;
+    right:7%;
+
+    height:45%;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.48),
+            rgba(255,255,255,.08),
+            transparent
+        );
+
+    border-radius:50px;
+
+    pointer-events:none;
+
+    opacity:.75;
+}
+
+.nav::after{
+    content:"";
+
+    position:absolute;
+
+    left:15%;
+    right:15%;
+    bottom:1px;
+
+    height:1px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.65),
+            transparent
+        );
+
+    opacity:.65;
+
+    pointer-events:none;
+}
+
+.nav a{
+    position:relative;
+
+    z-index:2;
+
+    color:var(--azul);
+
+    text-decoration:none;
+
+    font-size:9px;
+
+    font-weight:500;
+
+    letter-spacing:1px;
+
+    padding:9px 12px;
+
+    border-radius:30px;
+
+    background:transparent;
+
+    border:1px solid transparent;
+
+    transition:
+        background .35s ease,
+        color .35s ease,
+        box-shadow .35s ease,
+        transform .35s ease;
+}
+
+.nav a:hover{
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(255,255,255,.48),
+            rgba(255,255,255,.20)
+        );
+
+    color:var(--azul);
+
+    border-color:rgba(255,255,255,.40);
+
+    box-shadow:
+        0 2px 5px rgba(255,255,255,.35) inset,
+        0 4px 12px rgba(16,45,76,.08);
+
+    transform:translateY(-1px);
+}
+
+
+/* =========================
+   FOTO INICIAL
+========================= */
+
+.intro-photo{
+    position:fixed;
+    inset:0;
+    z-index:99999;
+
+    background:#ffffff;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    opacity:1;
+    visibility:visible;
+
+    transition:
+        opacity 1.2s ease,
+        visibility 1.2s ease;
+}
+
+.intro-photo.hide{
+    opacity:0;
+    visibility:hidden;
+    pointer-events:none;
+}
+
+.intro-photo img{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    display:block;
+}
+
+.intro-overlay{
+    position:absolute;
+    inset:0;
+
+    background:
+        linear-gradient(
+            180deg,
+            rgba(16,45,76,.10),
+            rgba(16,45,76,.48)
+        );
+
+    z-index:1;
+}
+
+.intro-content{
+    position:absolute;
+    z-index:2;
+
+    bottom:75px;
+
+    width:90%;
+
+    text-align:center;
+
+    color:white;
+}
+
+.intro-small{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:23px;
+
+    letter-spacing:.5px;
+
+    text-shadow:0 2px 12px rgba(0,0,0,.35);
+
+    margin-bottom:18px;
+}
+
+.intro-line{
+    width:70px;
+    height:1px;
+
+    background:rgba(255,255,255,.75);
+
+    margin:0 auto 25px;
+}
+
+.intro-button{
+    appearance:none;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    background:rgba(255,255,255,.12);
+
+    color:white;
+
+    padding:15px 30px;
+
+    border-radius:0;
+
+    font-family:'Montserrat',sans-serif;
+
+    font-size:10px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    cursor:pointer;
+
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+
+    transition:
+        background .3s ease,
+        transform .3s ease;
+}
+
+.intro-button:hover{
+    background:rgba(255,255,255,.25);
+    transform:translateY(-2px);
+}
+
+
+/* =========================
+   PORTADA
+========================= */
+
+#inicio{
+    background:#dce5ec;
+}
+
+#inicio::before{
+    content:"";
+
+    position:absolute;
+
+    inset:-35px;
+
+    background-image:url("iglesia.JPG");
+
+    background-position:center center;
+
+    background-size:cover;
+
+    background-repeat:no-repeat;
+
+    filter:blur(2px);
+
+    transform:scale(1.04);
+
+    opacity:1;
+
+    z-index:1;
+}
+
+#inicio::after{
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    background:rgba(16,45,76,.12);
+
+    z-index:2;
+}
+
+.hero-frame{
+    position:absolute;
+
+    inset:28px;
+
+    border:1px solid rgba(255,255,255,.55);
+
+    z-index:6;
+
+    pointer-events:none;
+}
+
+.hero-frame::before,
+.hero-frame::after{
+    content:"";
+
+    position:absolute;
+
+    width:70px;
+    height:70px;
+
+    border-color:rgba(255,255,255,.75);
+
+    border-style:solid;
+}
+
+.hero-frame::before{
+    top:-1px;
+    left:-1px;
+
+    border-width:1px 0 0 1px;
+}
+
+.hero-frame::after{
+    right:-1px;
+    bottom:-1px;
+
+    border-width:0 1px 1px 0;
+}
+
+
+/* =========================
+   TARJETA DE LA PORTADA
+========================= */
+
+.hero-card{
+    position:relative;
+
+    z-index:10;
+
+    width:min(760px,88%);
+
+    padding:48px 35px 42px;
+
+    background:rgba(255,255,255,.78);
+
+    border:1px solid rgba(255,255,255,.68);
+
+    box-shadow:
+        0 25px 70px rgba(16,45,76,.16),
+        0 5px 20px rgba(16,45,76,.08);
+
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    text-align:center;
+}
+
+#inicio .content{
+    z-index:10;
+
+    padding:50px 15px;
+}
+
+.pre-title{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:22px;
+
+    font-style:italic;
+
+    color:#173b63;
+
+    margin-bottom:27px;
+
+    letter-spacing:.4px;
+
+    text-shadow:none;
+}
+
+.ornament{
+    width:170px;
+    height:20px;
+
+    margin:0 auto 18px;
+
+    position:relative;
+}
+
+.ornament::before{
+    content:"";
+
+    position:absolute;
+
+    top:9px;
+    left:0;
+
+    width:65px;
+    height:1px;
+
+    background:rgba(23,59,99,.65);
+}
+
+.ornament::after{
+    content:"";
+
+    position:absolute;
+
+    top:9px;
+    right:0;
+
+    width:65px;
+    height:1px;
+
+    background:rgba(23,59,99,.65);
+}
+
+.ornament span{
+    position:absolute;
+
+    left:50%;
+    top:5px;
+
+    transform:
+        translateX(-50%)
+        rotate(45deg);
+
+    width:8px;
+    height:8px;
+
+    border:1px solid var(--azul-2);
+
+    background:#ffffff;
+}
+
+.names{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(52px,11vw,100px);
+
+    line-height:.82;
+
+    color:#173b63;
+
+    font-weight:500;
+
+    letter-spacing:-1px;
+
+    text-shadow:none;
+
+    position:relative;
+
+    z-index:10;
+}
+
+.names span{
+    display:block;
+}
+
+.nombre{
+    white-space:nowrap;
+}
+
+.and{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:34px;
+
+    font-weight:400;
+
+    font-style:italic;
+
+    color:#315b82;
+
+    margin:17px 0;
+
+    text-shadow:none;
+}
+
+.hero-line{
+    width:110px;
+    height:1px;
+
+    background:#315b82;
+
+    margin:32px auto 22px;
+
+    opacity:.75;
+}
+
+.date{
+    margin-top:0;
+
+    font-size:10px;
+
+    letter-spacing:4px;
+
+    text-transform:uppercase;
+
+    color:#173b63;
+
+    font-weight:600;
+
+    text-shadow:none;
+}
+
+.place{
+    margin-top:11px;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:22px;
+
+    color:#315b82;
+
+    font-weight:500;
+
+    text-shadow:none;
+}
+
+
+/* =========================
+   HISTORIA
+========================= */
+
+#historia{
+    background:
+        linear-gradient(
+            rgba(16,45,76,.30),
+            rgba(16,45,76,.52)
+        ),
+        url("https://images.unsplash.com/photo-1519741497674-611481863552?auto=format&fit=crop&w=1800&q=90")
+        center/cover no-repeat;
+}
+
+.history-card{
+    background:rgba(255,255,255,.96);
+
+    backdrop-filter:blur(13px);
+    -webkit-backdrop-filter:blur(13px);
+
+    padding:48px 32px;
+
+    max-width:760px;
+
+    margin:-55px auto 0;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        0 30px 80px rgba(16,45,76,.22),
+        0 8px 25px rgba(0,0,0,.10);
+}
+
+.quote{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(27px,5vw,40px);
+
+    line-height:1.18;
+
+    color:var(--azul);
+
+    font-style:italic;
+}
+
+.quote-author{
+    margin-top:20px;
+
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    color:var(--azul-2);
+
+    text-transform:uppercase;
+}
+
+
+/* =========================
+   CELEBRACIÓN
+========================= */
+
+#celebracion{
+    background:
+        linear-gradient(
+            rgba(23,59,99,.30),
+            rgba(23,59,99,.56)
+        ),
+        url("https://images.unsplash.com/photo-1507504031003-b417219a0fde?auto=format&fit=crop&w=1800&q=90")
+        center/cover no-repeat;
+}
+
+.event-card{
+    background:rgba(255,255,255,.96);
+
+    padding:45px 25px;
+
+    width:min(620px,90%);
+
+    box-shadow:
+        0 30px 80px rgba(0,0,0,.18);
+}
+
+.event-card h2{
+    font-size:58px;
+}
+
+.event-item{
+    padding:16px 0;
+
+    border-bottom:
+        1px solid rgba(23,59,99,.12);
+}
+
+.event-item:last-child{
+    border-bottom:none;
+}
+
+.event-label{
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--azul-2);
+
+    margin-bottom:5px;
+}
+
+.event-value{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:25px;
+
+    color:var(--azul);
+}
+
+.maps{
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:13px 24px;
+
+    border:1px solid var(--azul);
+
+    color:var(--azul);
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.maps:hover{
+    background:var(--azul);
+
+    color:white;
+}
+
+
+/* =========================
+   FAMILIAS
+========================= */
+
+#familias{
+    background:
+        linear-gradient(
+            rgba(16,45,76,.28),
+            rgba(16,45,76,.50)
+        ),
+        url("https://images.unsplash.com/photo-1522673607200-164d1b6ce486?auto=format&fit=crop&w=1800&q=90")
+        center/cover no-repeat;
+}
+
+.family-container{
+    width:min(900px,92%);
+}
+
+.family-title{
+    text-align:center;
+
+    margin-bottom:40px;
+}
+
+.family-title .small-title{
+    color:#ffffff;
+}
+
+.family-title .text{
+    color:#ffffff;
+}
+
+.family-title h2{
+    margin-bottom:12px;
+
+    color:#ffffff;
+}
+
+.families{
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:25px;
+}
+
+.family-box{
+    background:rgba(255,255,255,.96);
+
+    padding:35px 25px;
+
+    border:1px solid rgba(255,255,255,.75);
+
+    box-shadow:
+        0 30px 80px rgba(16,45,76,.20),
+        0 8px 25px rgba(0,0,0,.10);
+
+    text-align:center;
+}
+
+.family-box h3{
+    font-size:30px;
+
+    color:var(--azul);
+
+    margin-bottom:20px;
+}
+
+.family-box .side{
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--azul-2);
+
+    margin-bottom:8px;
+}
+
+.parent{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:23px;
+
+    color:var(--azul-2);
+
+    margin:7px 0;
+}
+
+
+/* =========================
+   CONFIRMACIÓN
+========================= */
+
+#confirmacion{
+    background:
+        linear-gradient(
+            rgba(237,243,248,.95),
+            rgba(255,255,255,.98)
+        );
+}
+
+.confirm-box{
+    max-width:650px;
+
+    background:#ffffff;
+
+    padding:50px 30px;
+
+    border:1px solid rgba(23,59,99,.10);
+
+    box-shadow:
+        0 25px 70px rgba(23,59,99,.08);
+}
+
+.confirm-box h2{
+    font-size:55px;
+}
+
+.confirm-box .confirmation-info{
+    margin-top:22px;
+    color:var(--gris);
+    line-height:1.8;
+    font-size:13px;
+}
+
+.confirm-button{
+    display:inline-block;
+
+    margin-top:25px;
+
+    padding:15px 30px;
+
+    background:var(--azul);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:10px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    transition:.3s;
+}
+
+.confirm-button:hover{
+    background:var(--azul-profundo);
+}
+
+
+/* =========================
+   CUENTA REGRESIVA
+========================= */
+
+.countdown{
+    margin-top:35px;
+
+    padding-top:28px;
+
+    border-top:
+        1px solid rgba(23,59,99,.10);
+}
+
+.countdown-title{
+    font-size:9px;
+
+    letter-spacing:3px;
+
+    text-transform:uppercase;
+
+    color:var(--azul-2);
+
+    margin-bottom:18px;
+}
+
+.countdown-grid{
+    display:flex;
+
+    justify-content:center;
+
+    gap:18px;
+}
+
+.countdown-item{
+    min-width:65px;
+
+    text-align:center;
+}
+
+.countdown-number{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:34px;
+
+    line-height:1;
+
+    color:var(--azul);
+
+    font-weight:500;
+}
+
+.countdown-label{
+    margin-top:7px;
+
+    font-size:7px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+
+    color:var(--gris);
+}
+
+.countdown-finished{
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:28px;
+
+    font-style:italic;
+
+    color:var(--azul);
+}
+
+
+/* =========================
+   GALERÍA FINAL
+========================= */
+
+.final-photos{
+    width:min(850px,92%);
+
+    margin:0 auto;
+
+    padding:65px 0 75px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    gap:28px;
+}
+
+.final-photo{
+    width:100%;
+
+    height:auto;
+
+    display:block;
+
+    border:1px solid rgba(23,59,99,.12);
+
+    box-shadow:
+        0 22px 55px rgba(16,45,76,.16);
+
+    background:#edf3f8;
+}
+
+
+/* =========================
+   CIERRE
+========================= */
+
+#cierre{
+    min-height:90vh;
+
+    background:
+        linear-gradient(
+            rgba(23,59,99,.63),
+            rgba(23,59,99,.76)
+        ),
+        url("https://images.unsplash.com/photo-1519225421980-715cb0215aed?auto=format&fit=crop&w=1800&q=90")
+        center/cover no-repeat;
+}
+
+.closing{
+    color:white;
+}
+
+.closing .small-title{
+    color:#dbe7f2;
+}
+
+.closing h2{
+    color:white;
+
+    font-size:clamp(55px,10vw,90px);
+}
+
+.closing p{
+    max-width:650px;
+
+    margin:auto;
+
+    color:rgba(255,255,255,.90);
+
+    line-height:1.9;
+
+    font-size:14px;
+}
+
+.closing .blue-line{
+    background:#dbe7f2;
+}
+
+
+/* =========================
+   FOOTER
+========================= */
+
+footer{
+    padding:28px 20px;
+
+    text-align:center;
+
+    background:var(--azul-profundo);
+
+    color:rgba(255,255,255,.65);
+
+    font-size:9px;
+
+    letter-spacing:2px;
+
+    text-transform:uppercase;
+}
+
+footer strong{
+    color:white;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:19px;
+
+    letter-spacing:1px;
+}
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+.fade{
+    opacity:0;
+
+    transform:translateY(30px);
+
+    transition:
+        opacity 1s ease,
+        transform 1s ease;
+}
+
+.fade.show{
+    opacity:1;
+
+    transform:translateY(0);
+}
+
+
+/* =========================
+   MÓVIL
+========================= */
+
+@media(max-width:600px){
+
+    .nav{
+        top:10px;
+
+        width:calc(100% - 18px);
+
+        overflow-x:auto;
+
+        justify-content:flex-start;
+
+        scrollbar-width:none;
+    }
+
+    .nav::-webkit-scrollbar{
+        display:none;
+    }
+
+    .nav a{
+        white-space:nowrap;
+
+        font-size:9px;
+
+        padding:8px 10px;
+    }
+
+
+    .hero-frame{
+        inset:18px;
+    }
+
+
+    #inicio .content{
+        padding:45px 10px;
+    }
+
+
+    .hero-card{
+        width:calc(100% - 10px);
+
+        padding:
+            38px
+            18px
+            35px;
+    }
+
+
+    .pre-title{
+        font-size:20px;
+
+        margin-bottom:25px;
+    }
+
+
+    .ornament{
+        width:145px;
+    }
+
+    .ornament::before,
+    .ornament::after{
+        width:53px;
+    }
+
+
+    .names{
+        font-size:clamp(46px,13vw,72px);
+
+        letter-spacing:-.8px;
+    }
+
+
+    .nombre{
+        white-space:nowrap;
+    }
+
+
+    .and{
+        font-size:30px;
+
+        margin:14px 0;
+    }
+
+
+    .hero-line{
+        width:90px;
+
+        margin:28px auto 20px;
+    }
+
+
+    .date{
+        font-size:9px;
+
+        letter-spacing:3px;
+    }
+
+
+    .place{
+        font-size:21px;
+    }
+
+
+    .families{
+        grid-template-columns:1fr;
+    }
+
+
+    .history-card{
+        padding:35px 22px;
+    }
+
+
+    .event-card{
+        padding:35px 20px;
+    }
+
+
+    .event-card h2{
+        font-size:48px;
+    }
+
+
+    .family-box{
+        padding:30px 20px;
+    }
+
+
+    .intro-content{
+        bottom:60px;
+    }
+
+
+    .intro-small{
+        font-size:21px;
+    }
+
+
+    .countdown-grid{
+        gap:8px;
+    }
+
+
+    .countdown-item{
+        min-width:58px;
+    }
+
+
+    .countdown-number{
+        font-size:30px;
+    }
+
+
+    .countdown-label{
+        font-size:6px;
+
+        letter-spacing:1.5px;
+    }
+
+
+    .final-photos{
+        width:calc(100% - 30px);
+
+        padding:50px 0 60px;
+
+        gap:20px;
+    }
+
+
+    .final-photo{
+        width:100%;
+
+        height:auto;
+    }
+
+}
+
+
+@media(max-width:380px){
+
+    .hero-card{
+        padding:
+            32px
+            14px
+            30px;
+    }
+
+
+    .names{
+        font-size:43px;
+    }
+
+
+    .and{
+        font-size:27px;
+    }
+
+
+    .pre-title{
+        font-size:20px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+
+<!-- =========================
+     FOTO INICIAL
+========================= -->
+
+<div class="intro-photo" id="introPhoto">
+
+    <img
+        src="foto-erick-gaby.JPG"
+        alt="Erick y Gaby">
+
+    <div class="intro-overlay"></div>
+
+    <div class="intro-content">
+
+        <div class="intro-small">
+            Erick Aguilar & Gaby Gonzales
+        </div>
+
+        <div class="intro-line"></div>
+
+        <button
+            class="intro-button"
+            id="verInvitacion">
+
+            Ver invitación
+
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     NAVEGACIÓN
+========================= -->
+
+<nav class="nav">
+
+    <a href="#inicio">
+        Inicio
+    </a>
+
+    <a href="#historia">
+        Historia
+    </a>
+
+    <a href="#celebracion">
+        Celebración
+    </a>
+
+    <a href="#familias">
+        Familias
+    </a>
+
+    <a href="#confirmacion">
+        Confirmación
+    </a>
+
+</nav>
+
+
+<!-- =========================
+     PORTADA
+========================= -->
+
+<section id="inicio">
+
+    <div class="hero-frame"></div>
+
+    <div class="content fade">
+
+        <div class="hero-card">
+
+            <div class="pre-title">
+                Con la bendición de Dios
+            </div>
+
+            <div class="ornament">
+                <span></span>
+            </div>
+
+            <div class="names">
+
+                <span class="nombre">
+                    Erick Aguilar
+                </span>
+
+                <div class="and">
+                    &
+                </div>
+
+                <span class="nombre">
+                    Gaby Gonzales
+                </span>
+
+            </div>
+
+            <div class="hero-line"></div>
+
+            <div class="date">
+                Unimos nuestras vidas en matrimonio
+            </div>
+
+            <div class="place">
+                y queremos compartir este momento contigo
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     HISTORIA
+========================= -->
+
+<section id="historia">
+
+    <div class="content fade">
+
+        <div class="small-title">
+            Nuestra historia
+        </div>
+
+        <div class="history-card">
+
+            <div class="quote">
+                “Las mejores historias de amor son aquellas que Dios escribe en el corazón.”
+            </div>
+
+            <div class="blue-line"></div>
+
+            <p class="text">
+                Hoy celebramos el comienzo de una nueva etapa,
+                agradeciendo a Dios por permitirnos caminar juntos
+                y por poner en nuestras vidas a personas tan especiales
+                que han acompañado nuestra historia.
+            </p>
+
+            <div class="quote-author">
+                Erick Aguilar & Gaby Gonzales
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CELEBRACIÓN
+========================= -->
+
+<section id="celebracion">
+
+    <div class="content fade">
+
+        <div class="event-card">
+
+            <div class="small-title">
+                Celebremos juntos
+            </div>
+
+            <h2>
+                Nuestra boda
+            </h2>
+
+            <div class="event-item">
+
+                <div class="event-label">
+                    Fecha
+                </div>
+
+                <div class="event-value">
+                    Domingo 13 de diciembre
+                </div>
+
+            </div>
+
+            <div class="event-item">
+
+                <div class="event-label">
+                    Hora
+                </div>
+
+                <div class="event-value">
+                    4:00 PM
+                </div>
+
+            </div>
+
+            <div class="event-item">
+
+                <div class="event-label">
+                    Lugar
+                </div>
+
+                <div class="event-value">
+                    Le Fontaine
+                </div>
+
+            </div>
+
+            <div class="event-item">
+
+                <div class="event-label">
+                    Dirección
+                </div>
+
+                <div class="event-value">
+                    Granja San Francisco Yumar
+                    <br>
+                    Mixco, Guatemala
+                </div>
+
+            </div>
+
+            <a
+                class="maps"
+                href="https://www.google.com/maps/search/?api=1&query=Le+Fontaine+Granja+San+Francisco+Yumar+Mixco+Guatemala"
+                target="_blank">
+
+                Ver ubicación
+
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FAMILIAS
+========================= -->
+
+<section id="familias">
+
+    <div class="family-container fade">
+
+        <div class="family-title">
+
+            <div class="small-title">
+                Con nuestras familias
+            </div>
+
+            <h2>
+                La unión de dos familias
+            </h2>
+
+            <p class="text">
+                Con mucho amor presentamos a quienes han acompañado
+                nuestras vidas y forman parte importante de este día
+                tan especial.
+            </p>
+
+        </div>
+
+        <div class="families">
+
+            <div class="family-box">
+
+                <div class="side">
+                    Padres del novio
+                </div>
+
+                <h3>
+                    Familia Aguilar
+                </h3>
+
+                <div class="parent">
+                    Olga Godoy
+                </div>
+
+                <div class="parent">
+                    Edgardo Aguilar
+                </div>
+
+            </div>
+
+
+            <div class="family-box">
+
+                <div class="side">
+                    Padres de la novia
+                </div>
+
+                <h3>
+                    Familia Gonzales
+                </h3>
+
+                <div class="parent">
+                    Norma Velásquez
+                </div>
+
+                <div class="parent">
+                    Antonio Gonzales
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONFIRMACIÓN
+========================= -->
+
+<section id="confirmacion">
+
+    <div class="content fade">
+
+        <div class="confirm-box">
+
+            <div class="small-title">
+                Un día para recordar
+            </div>
+
+            <h2>
+                Tu presencia
+            </h2>
+
+            <p class="text">
+                Será un honor compartir este momento tan especial
+                contigo. Te agradecemos confirmar tu asistencia y
+                acompañarnos en el inicio de esta nueva etapa.
+            </p>
+
+            <p class="confirmation-info">
+                Consulta el número de personas invitadas asignadas
+                a tu invitación.
+            </p>
+
+            <p class="confirmation-info">
+                Confirma tu asistencia por WhatsApp y te brindaremos
+                la información correspondiente.
+            </p>
+
+            <a
+                href="https://wa.me/50233072769?text=Hola%2C%20quisiera%20confirmar%20mi%20asistencia%20a%20la%20boda%20de%20Erick%20Aguilar%20y%20Gaby%20Gonzales.%0A%0ATambi%C3%A9n%20quisiera%20saber%20cu%C3%A1ntas%20personas%20est%C3%A1n%20invitadas%20en%20nuestra%20invitaci%C3%B3n."
+                class="confirm-button"
+                target="_blank">
+
+                Confirmar asistencia
+
+            </a>
+
+
+            <div class="countdown">
+
+                <div class="countdown-title">
+                    Faltan para nuestro gran día
+                </div>
+
+                <div
+                    class="countdown-grid"
+                    id="countdown">
+
+                    <div class="countdown-item">
+
+                        <div
+                            class="countdown-number"
+                            id="days">
+                            00
+                        </div>
+
+                        <div class="countdown-label">
+                            Días
+                        </div>
+
+                    </div>
+
+
+                    <div class="countdown-item">
+
+                        <div
+                            class="countdown-number"
+                            id="hours">
+                            00
+                        </div>
+
+                        <div class="countdown-label">
+                            Horas
+                        </div>
+
+                    </div>
+
+
+                    <div class="countdown-item">
+
+                        <div
+                            class="countdown-number"
+                            id="minutes">
+                            00
+                        </div>
+
+                        <div class="countdown-label">
+                            Minutos
+                        </div>
+
+                    </div>
+
+
+                    <div class="countdown-item">
+
+                        <div
+                            class="countdown-number"
+                            id="seconds">
+                            00
+                        </div>
+
+                        <div class="countdown-label">
+                            Segundos
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOTOS ANTES DEL CIERRE
+========================= -->
+
+<div class="final-photos">
+
+    <img
+        class="final-photo"
+        src="boda-2.JPG"
+        alt="Erick y Gaby">
+
+    <img
+        class="final-photo"
+        src="boda-4.JPG"
+        alt="Erick y Gaby">
+
+</div>
+
+
+<!-- =========================
+     CIERRE
+========================= -->
+
+<section id="cierre">
+
+    <div class="content closing fade">
+
+        <div class="small-title">
+            Para siempre
+        </div>
+
+        <h2>
+            Erick & Gaby
+        </h2>
+
+        <div class="blue-line"></div>
+
+        <p>
+            “Y sobre todas estas cosas, vestíos de amor,
+            que es el vínculo perfecto.”
+        </p>
+
+        <p
+            style="
+                margin-top:18px;
+                font-family:'Cormorant Garamond',serif;
+                font-size:20px;
+            ">
+
+            Colosenses 3:14
+
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     FOOTER
+========================= -->
+
+<footer>
+
+    <strong>
+        Erick Aguilar & Gaby Gonzales
+    </strong>
+
+    <br>
+    <br>
+
+    13 · DICIEMBRE · 2026
+
+</footer>
+
+
+<!-- =========================
+     MÚSICA
+========================= -->
+
+<audio
+    id="musicaBoda"
+    preload="auto"
+    loop>
+
+    <source
+        src="Boda-1.mp3"
+        type="audio/mpeg">
+
+</audio>
+
+
+<script>
+
+/* =========================
+   ELEMENTOS
+========================= */
+
+const introPhoto =
+    document.getElementById("introPhoto");
+
+const verInvitacion =
+    document.getElementById("verInvitacion");
+
+const musicaBoda =
+    document.getElementById("musicaBoda");
+
+
+/* =========================
+   MÚSICA
+========================= */
+
+musicaBoda.volume = 0.035;
+
+
+/* =========================
+   NARRACIÓN
+========================= */
+
+let narracionActiva = false;
+
+let narracionIniciada = false;
+
+let seccionActual = -1;
+
+let ultimaSeccionNarrada = -1;
+
+let vocesDisponibles = [];
+
+
+/*
+    Textos preparados específicamente
+    para que la invitación sea escuchada.
+*/
+
+const narraciones = {
+
+    inicio:
+        "Erick Aguilar y Gaby Gonzales. Con la bendición de Dios, unimos nuestras vidas en matrimonio y queremos compartir este momento contigo.",
+
+    historia:
+        "Nuestra historia. Las mejores historias de amor son aquellas que Dios escribe en el corazón. Hoy celebramos el comienzo de una nueva etapa, agradeciendo a Dios por permitirnos caminar juntos y por poner en nuestras vidas a personas tan especiales que han acompañado nuestra historia.",
+
+    celebracion:
+        "Celebremos juntos nuestra boda. La celebración será el domingo trece de diciembre de dos mil veintiséis, a las cuatro de la tarde. El lugar será Le Fontaine, en Granja San Francisco Yumar, Mixco, Guatemala.",
+
+    familias:
+        "Con nuestras familias. La unión de dos familias. Por parte del novio, la Familia Aguilar: Olga Godoy y Edgardo Aguilar. Por parte de la novia, la Familia Gonzales: Norma Velásquez y Antonio Gonzales.",
+
+    confirmacion:
+        "Un día para recordar. Tu presencia será un honor para nosotros. Te agradecemos confirmar tu asistencia y acompañarnos en el inicio de esta nueva etapa. También puedes consultar el número de personas invitadas asignadas a tu invitación y confirmar tu asistencia por WhatsApp.",
+
+    cierre:
+        "Para siempre, Erick y Gaby. Y sobre todas estas cosas, vestíos de amor, que es el vínculo perfecto. Colosenses tres, versículo catorce."
+
+};
+
+
+/* =========================
+   CARGAR VOCES
+========================= */
+
+function cargarVoces(){
+
+    vocesDisponibles =
+        window.speechSynthesis
+            ? window.speechSynthesis.getVoices()
+            : [];
+
+}
+
+if("speechSynthesis" in window){
+
+    cargarVoces();
+
+    window.speechSynthesis.onvoiceschanged =
+        cargarVoces;
+
+}
+
+
+/* =========================
+   BUSCAR VOZ EN ESPAÑOL
+========================= */
+
+function obtenerVoz(){
+
+    if(!vocesDisponibles.length){
+
+        cargarVoces();
+
+    }
+
+    const vozEspanol =
+        vocesDisponibles.find(
+            voz =>
+                voz.lang &&
+                voz.lang.toLowerCase().startsWith("es")
+        );
+
+    return vozEspanol || null;
+
+}
+
+
+/* =========================
+   HABLAR
+========================= */
+
+function hablar(texto){
+
+    if(!("speechSynthesis" in window)){
+
+        return;
+
+    }
+
+    window.speechSynthesis.cancel();
+
+    const mensaje =
+        new SpeechSynthesisUtterance(texto);
+
+    mensaje.lang = "es-MX";
+
+    mensaje.rate = 0.90;
+
+    mensaje.pitch = 1;
+
+    mensaje.volume = 1;
+
+    const voz =
+        obtenerVoz();
+
+    if(voz){
+
+        mensaje.voice = voz;
+
+    }
+
+    window.speechSynthesis.speak(mensaje);
+
+}
+
+
+/* =========================
+   NARRAR SECCIÓN
+========================= */
+
+function narrarSeccion(indice){
+
+    if(!narracionActiva){
+
+        return;
+
+    }
+
+    if(indice === ultimaSeccionNarrada){
+
+        return;
+
+    }
+
+    const secciones =
+        [
+            "inicio",
+            "historia",
+            "celebracion",
+            "familias",
+            "confirmacion",
+            "cierre"
+        ];
+
+    const nombre =
+        secciones[indice];
+
+    if(!nombre){
+
+        return;
+
+    }
+
+    ultimaSeccionNarrada =
+        indice;
+
+    hablar(
+        narraciones[nombre]
+    );
+
+}
+
+
+/* =========================
+   INICIAR NARRACIÓN
+========================= */
+
+function iniciarNarracion(){
+
+    narracionActiva =
+        true;
+
+    narracionIniciada =
+        true;
+
+    ultimaSeccionNarrada =
+        -1;
+
+    seccionActual =
+        -1;
+
+    /*
+        Al abrir la invitación,
+        comenzamos directamente
+        con la portada.
+    */
+
+    setTimeout(
+        function(){
+
+            narrarSeccion(0);
+
+        },
+        500
+    );
+
+}
+
+
+/* =========================
+   BOTÓN ABRIR INVITACIÓN
+========================= */
+
+verInvitacion.addEventListener(
+    "click",
+    function(){
+
+        introPhoto.classList.add(
+            "hide"
+        );
+
+        musicaBoda.currentTime = 0;
+
+        musicaBoda.play().catch(
+            function(error){
+
+                console.log(
+                    "No se pudo reproducir la música:",
+                    error
+                );
+
+            }
+        );
+
+        document.body.style.overflowX =
+            "hidden";
+
+        iniciarNarracion();
+
+    }
+);
+
+
+/* =========================
+   DETECTAR SECCIÓN VISIBLE
+========================= */
+
+const seccionesNarradas =
+    [
+        document.getElementById("inicio"),
+        document.getElementById("historia"),
+        document.getElementById("celebracion"),
+        document.getElementById("familias"),
+        document.getElementById("confirmacion"),
+        document.getElementById("cierre")
+    ];
+
+
+/*
+    Detectamos la sección que ocupa
+    la mayor parte de la pantalla.
+
+    Esto permite que al bajar a la
+    siguiente "página", la narración
+    cambie automáticamente.
+*/
+
+const observadorNarracion =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(
+                        entry.isIntersecting &&
+                        entry.intersectionRatio >= .55
+                    ){
+
+                        const indice =
+                            seccionesNarradas.indexOf(
+                                entry.target
+                            );
+
+                        if(indice !== -1){
+
+                            seccionActual =
+                                indice;
+
+                            if(
+                                narracionIniciada &&
+                                narracionActiva
+                            ){
+
+                                narrarSeccion(
+                                    indice
+                                );
+
+                            }
+
+                        }
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:[
+                .55,
+                .70,
+                .85
+            ]
+        }
+
+    );
+
+
+seccionesNarradas.forEach(
+    seccion => {
+
+        if(seccion){
+
+            observadorNarracion.observe(
+                seccion
+            );
+
+        }
+
+    }
+);
+
+
+/* =========================
+   CUENTA REGRESIVA
+========================= */
+
+const fechaBoda =
+    new Date(
+        "2026-12-13T16:00:00"
+    ).getTime();
+
+const countdown =
+    setInterval(
+        function(){
+
+            const ahora =
+                new Date().getTime();
+
+            const diferencia =
+                fechaBoda - ahora;
+
+            if(diferencia <= 0){
+
+                clearInterval(
+                    countdown
+                );
+
+                document.getElementById(
+                    "countdown"
+                ).innerHTML =
+                    '<div class="countdown-finished">Hoy es el gran día</div>';
+
+                return;
+
+            }
+
+            const dias =
+                Math.floor(
+                    diferencia /
+                    (1000 * 60 * 60 * 24)
+                );
+
+            const horas =
+                Math.floor(
+                    (diferencia %
+                    (1000 * 60 * 60 * 24)) /
+                    (1000 * 60 * 60)
+                );
+
+            const minutos =
+                Math.floor(
+                    (diferencia %
+                    (1000 * 60 * 60)) /
+                    (1000 * 60)
+                );
+
+            const segundos =
+                Math.floor(
+                    (diferencia %
+                    (1000 * 60)) /
+                    1000
+                );
+
+
+            document.getElementById("days")
+                .textContent =
+                String(dias)
+                    .padStart(2,"0");
+
+            document.getElementById("hours")
+                .textContent =
+                String(horas)
+                    .padStart(2,"0");
+
+            document.getElementById("minutes")
+                .textContent =
+                String(minutos)
+                    .padStart(2,"0");
+
+            document.getElementById("seconds")
+                .textContent =
+                String(segundos)
+                    .padStart(2,"0");
+
+        },
+        1000
+    );
+
+
+/* =========================
+   ANIMACIONES
+========================= */
+
+const elements =
+    document.querySelectorAll(
+        ".fade"
+    );
+
+const observer =
+    new IntersectionObserver(
+
+        entries => {
+
+            entries.forEach(
+                entry => {
+
+                    if(entry.isIntersecting){
+
+                        entry.target.classList.add(
+                            "show"
+                        );
+
+                    }
+
+                }
+            );
+
+        },
+
+        {
+            threshold:.15
+        }
+
+    );
+
+elements.forEach(
+    element =>
+    observer.observe(element)
+);
+
+</script>
+
+</body>
+</html>
